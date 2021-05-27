@@ -10,7 +10,8 @@ class CBinaryTree {
 public:
     CBinaryTree();
     void setRoot(int value);
-    void insertLeft(Node* targetNode, int value);    
+    void insertLeft(Node* targetNode, int value);  
+    void insertRight(Node* targetNode, int value);      
     Node* getRootNode() {
         return m_pRoot;
     }

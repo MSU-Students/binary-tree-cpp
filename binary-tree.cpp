@@ -29,3 +29,13 @@ void CBinaryTree::insertLeft(Node* targetNode, int value) {
         pLeft->pLeft = pLeft->pRight = NULL;
     }
 }
+void CBinaryTree::insertRight(Node* targetNode, int value) {
+    if (targetNode && targetNode->pRight) {
+        targetNode->pRight->value = value;
+    } else {//NULL
+        Node* pRight = new Node();
+        targetNode->pRight = pRight;
+        pRight->value = value;
+        pRight->pLeft = pRight->pRight = NULL;
+    }
+}
