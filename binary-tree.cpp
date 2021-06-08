@@ -21,7 +21,21 @@ void LinkedBinaryTree::expandExternal(const Position& p) {
 
 }  // expand external node
 Position LinkedBinaryTree::removeAboveExternal(const Position& p) {
-    return Position();
+    Node* w = p.v; Node* v = w->par;                                    // get p�s node and parent
+    Node* sib = (w == v->left ? v->right : v->left);
+    if (v == _root) {                                                    // child of root?
+        _root = sib;                                                     // . . .make sibling root
+        sib->par = NULL;
+    }
+    else {
+        Node* gpar = v->par;                                            // w�s grandparent
+        if (v == gpar->left) gpar->left = sib;                          // replace parent by sib
+        else gpar->right = sib;
+        sib->par = gpar;
+    }
+    delete w; delete v;                                                 // delete removed nodes
+    n -= 2;                                                             // two fewer nodes
+    return Position(sib);
 }
 void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
 
