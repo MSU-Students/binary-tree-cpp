@@ -12,7 +12,8 @@ Position LinkedBinaryTree::root() const {
     return Position();
 }
 PositionList LinkedBinaryTree::positions() const {
-    return PositionList();
+    PositionList pl;
+    return PositionList(pl);
 }
 void LinkedBinaryTree::addRoot() {
 
@@ -24,5 +25,6 @@ Position LinkedBinaryTree::removeAboveExternal(const Position& p) {
     return Position();
 }
 void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
+    pl.push_back(Position (v));
 
 } // preorder utility
