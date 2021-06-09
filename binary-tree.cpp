@@ -13,6 +13,7 @@ Position LinkedBinaryTree::root() const {
 }
 PositionList LinkedBinaryTree::positions() const {
     PositionList pl;
+    preorder(_root, pl);
     return PositionList(pl);
 }
 void LinkedBinaryTree::addRoot() {
