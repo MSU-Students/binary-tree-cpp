@@ -19,7 +19,12 @@ void LinkedBinaryTree::addRoot() {
 
 } 
 void LinkedBinaryTree::expandExternal(const Position& p) {
-
+    Node* v = p.v;              
+    v−>left = new Node; 
+    v−>left−>par = v; 
+    v−>right = new Node;
+    v−>right−>par = v; 
+    n += 2; 
 }  // expand external node
 Position LinkedBinaryTree::removeAboveExternal(const Position& p) {
     Node* w = p.v; Node* v = w->par;                                    // get p�s node and parent
