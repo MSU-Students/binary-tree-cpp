@@ -12,7 +12,8 @@ Position LinkedBinaryTree::root() const {
     return Position();
 }
 PositionList LinkedBinaryTree::positions() const {
-    return PositionList();
+    PositionList pl;
+    return PositionList(pl);
 }
 void LinkedBinaryTree::addRoot() {
 
