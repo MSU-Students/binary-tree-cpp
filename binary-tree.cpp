@@ -38,5 +38,11 @@ Position LinkedBinaryTree::removeAboveExternal(const Position& p) {
     return Position(sib);
 }
 void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
-
-} // preorder utility
+    pl.push_back(Position(v));
+    if (v->left != NULL) {
+        preorder(v->left, pl);
+    }
+    if (v->right != NULL) {
+        preorder(v->right, pl);
+    }
+} 
