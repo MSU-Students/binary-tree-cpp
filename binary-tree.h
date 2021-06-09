@@ -54,3 +54,29 @@ private:
     Node * _root;
     int n;
 };
+LinkedBinaryTree::PositionList LinkedBinaryTree::positions() const {
+    PositionList pl;
+    preorder( root, pl); 		// preorder traversal
+    return PositionList(pl); 		// return resulting list
+}
+
+void parenPrint(const Tree& T, const Position& p) {
+    cout << *p; 			// print node’s element
+    if (!p.isExternal()) {
+        PositionList ch = p.children(); // list of children
+        cout << "( "; 			// open
+        for (Iterator q = ch.begin(); q != ch.end(); ++q) {
+            if (q != ch.begin()) cout << " "; // print separator
+            parenPrint(T, *q); 		// visit the next child
+        }
+        cout << " )"; 			// close
+    }
+}
+
+void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
+    pl.push back(Position(v)); 		// add this node
+    if (v−>left != NULL) 		// traverse left subtree
+        preorder(v−>left, pl);
+    if (v−>right != NULL) 		// traverse right subtree
+        preorder(v−>right, pl);
+}
