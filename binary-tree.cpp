@@ -9,7 +9,7 @@ bool LinkedBinaryTree::empty() const {
     return false;
 } 
 Position LinkedBinaryTree::root() const {
-    return Position();
+    return Position(_root);
 }
 PositionList LinkedBinaryTree::positions() const {
     PositionList pl;
@@ -17,7 +17,8 @@ PositionList LinkedBinaryTree::positions() const {
     return PositionList(pl);
 }
 void LinkedBinaryTree::addRoot() {
-
+    _root = new Node;
+    n = 1;
 } 
 void LinkedBinaryTree::expandExternal(const Position& p) {
     Node* v = p.v;              

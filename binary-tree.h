@@ -3,7 +3,7 @@
 #define NULL 0
 #endif
 
-typedef int Elem;
+typedef char Elem;
 
 struct Node {
     Elem elem;
@@ -39,6 +39,8 @@ class Position {
 typedef std::list<Position> PositionList;
 
 class LinkedBinaryTree {
+protected:
+    //
 public:
     LinkedBinaryTree();
     int size() const;
