@@ -7,10 +7,12 @@ LinkedBinaryTree<T>::LinkedBinaryTree() {
 }
 template <class T>
 int LinkedBinaryTree<T>::size() const {
+    //TODO:for chris
     return 0;
 }
 template <class T>
 bool LinkedBinaryTree<T>::empty() const {
+    //TODO:for Naim
     return false;
 }
 template <class T> 

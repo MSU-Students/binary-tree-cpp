@@ -36,13 +36,15 @@ class Position {
         bool isExternal() const {
             return v->left == NULL && v->right == NULL;
         }   
-        template <class>friend class LinkedBinaryTree;  // give tree access
+        template <class>
+        friend class LinkedBinaryTree;  // give tree access
 };
 
 
 
 template <class T>
 class LinkedBinaryTree {
+
 public:
     typedef std::list<Position<T>> PositionList;
     LinkedBinaryTree();
