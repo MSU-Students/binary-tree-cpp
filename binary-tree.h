@@ -1,31 +1,33 @@
+#ifndef BINARY_TREE_H
+#define BINARY_TREE_H
 #include <list>
 #ifndef NULL
 #define NULL 0
 #endif
-
-typedef char Elem;
-
+#pragma once
+template <class T>
 struct Node {
-    Elem elem;
-    Node * left, *right, *par;
+    T elem;
+    Node<T> * left, *right, *par;
     Node():elem(0), par(NULL), left(NULL), right(NULL){}
 };
 
+template <class T>
 class Position {
     private:
-        Node* v;
+        Node<T>* v;
     public:
-        Position(Node* _v = NULL):v(_v){}
-        Elem& operator *() {  // get element
+        Position(Node<T>* _v = NULL):v(_v){}
+        T& operator *() {  // get 
             return v->elem;
         }
-        Position left() const { // get left child
+        Position<T> left() const { // get left child
             return Position(v->left);
         }
-        Position right() const { // get right child
-            return Position(v->right);
+        Position<T> right() const { // get right child
+            return Position<T>(v->right);
         }
-        Position parent() const { // get parent
+        Position<T> parent() const { // get parent
             return Position(v->par);
         }
         bool isRoot() const {
@@ -34,25 +36,29 @@ class Position {
         bool isExternal() const {
             return v->left == NULL && v->right == NULL;
         }   
-        friend class LinkedBinaryTree;  // give tree access
+        template <class>friend class LinkedBinaryTree;  // give tree access
 };
-typedef std::list<Position> PositionList;
 
+
+
+template <class T>
 class LinkedBinaryTree {
-protected:
-    //
 public:
+    typedef std::list<Position<T>> PositionList;
     LinkedBinaryTree();
     int size() const;
     bool empty() const; 
-    Position root() const;
+    Position<T> root() const;
     PositionList positions() const;
     void addRoot(); 
-    void expandExternal(const Position& p);  // expand external node
-    Position removeAboveExternal(const Position& p);
+    void expandExternal(const Position<T>& p);  // expand external node
+    Position<T> removeAboveExternal(const Position<T>& p);
 protected:
-    void preorder(Node* v, PositionList& pl) const; // preorder utility
+    void preorder(Node<T>* v, PositionList& pl) const; // preorder utility
 private:
-    Node * _root;
+    Node<T> * _root;
     int n;
 };
+
+#include "binary-tree.cpp"
+#endif 

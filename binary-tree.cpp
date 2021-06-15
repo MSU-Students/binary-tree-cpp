@@ -1,52 +1,63 @@
 #include "binary-tree.h"
-LinkedBinaryTree::LinkedBinaryTree() {
+#ifndef BINARY_TREE_CPP
+#define BINARY_TREE_CPP
+template <class T>
+LinkedBinaryTree<T>::LinkedBinaryTree() {
 
 }
-int LinkedBinaryTree::size() const {
+template <class T>
+int LinkedBinaryTree<T>::size() const {
     return 0;
 }
-bool LinkedBinaryTree::empty() const {
+template <class T>
+bool LinkedBinaryTree<T>::empty() const {
     return false;
-} 
-Position LinkedBinaryTree::root() const {
-    return Position(_root);
 }
-PositionList LinkedBinaryTree::positions() const {
+template <class T> 
+Position<T> LinkedBinaryTree<T>::root() const {
+    return Position<T>(_root);
+}
+template <class T>
+std::list<Position<T>> LinkedBinaryTree<T>::positions() const {
     PositionList pl;
     preorder(_root, pl);
     return PositionList(pl);
 }
-void LinkedBinaryTree::addRoot() {
-    _root = new Node;
+template <class T>
+void LinkedBinaryTree<T>::addRoot() {
+    _root = new Node<T>;
     n = 1;
 } 
-void LinkedBinaryTree::expandExternal(const Position& p) {
-    Node* v = p.v;              
-    v->left = new Node; 
+template <class T>
+void LinkedBinaryTree<T>::expandExternal(const Position<T>& p) {
+    Node<T>* v = p.v;              
+    v->left = new Node<T>; 
     v->left->par = v; 
-    v->right = new Node;
+    v->right = new Node<T>;
     v->right->par = v; 
     n += 2; 
 }  // expand external node
-Position LinkedBinaryTree::removeAboveExternal(const Position& p) {
-    Node* w = p.v; Node* v = w->par;                                    // get p�s node and parent
-    Node* sib = (w == v->left ? v->right : v->left);
+template <class T>
+Position<T> LinkedBinaryTree<T>::removeAboveExternal(const Position<T>& p) {
+    Node<T>* w = p.v; Node<T>* v = w->par;                                    // get p�s node and parent
+    Node<T>* sib = (w == v->left ? v->right : v->left);
     if (v == _root) {                                                    // child of root?
         _root = sib;                                                     // . . .make sibling root
         sib->par = NULL;
     }
     else {
-        Node* gpar = v->par;                                            // w�s grandparent
+        Node<T>* gpar = v->par;                                            // w�s grandparent
         if (v == gpar->left) gpar->left = sib;                          // replace parent by sib
         else gpar->right = sib;
         sib->par = gpar;
     }
     delete w; delete v;                                                 // delete removed nodes
     n -= 2;                                                             // two fewer nodes
-    return Position(sib);
+    return Position<T>(sib);
 }
-void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
-    pl.push_back(Position(v));
+template <class T>
+void LinkedBinaryTree<T>::preorder(Node<T>* v, PositionList& pl) const {
+    pl.push_back(Position<T>(v));
     if (v->left != NULL) {
         preorder(v->left, pl);
     }
@@ -54,3 +65,6 @@ void LinkedBinaryTree::preorder(Node* v, PositionList& pl) const {
         preorder(v->right, pl);
     }
 } 
+#endif
+// template class LinkedBinaryTree<char>;
+// template class LinkedBinaryTree<int>;
