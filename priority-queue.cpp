@@ -30,6 +30,26 @@ template <typename T>
 void PriorityQueue<T>::removeMin() {
     //TODO: mark
     //remove root
+   if (size() == 1)
+	T.removeLast();
+else
+{
+	Position u = T.root();
+	T.swap(u, T.last());
+	T.removeLast();
+	while (T.hasleft(u))
+	{
+		Position v = T.left(u);
+		if (T.hasRight(u) && isLess(*(T.right(u)), *v))
+			v = T.right(u);
+		if (isLess(*v, *u)) 
+		{
+			T.swap(u,v);
+			u = v;
+		}
+		else break;
+	}
+}
 }
 
 #endif
