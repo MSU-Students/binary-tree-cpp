@@ -30,10 +30,7 @@ template <typename T>
 void PriorityQueue<T>::removeMin() {
     //TODO: mark
     //remove root
-    
-    //return *LinkedBinaryTree<T>::min();
-   
-    /*if (size() == 1)
+    if (size() == 1)
 	T.removeLast();
     else
 	{
@@ -52,7 +49,7 @@ void PriorityQueue<T>::removeMin() {
 		}
 		else break;
 	}
-   }*/
+   }
 }
 
 #endif
