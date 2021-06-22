@@ -32,7 +32,7 @@ void PriorityQueue<T>::removeMin() {
     //remove root
    if (size() == 1)
 	T.removeLast();
-	else
+   else
 	{
 	Position u = T.root();
 	T.swap(u, T.last());
@@ -49,7 +49,7 @@ void PriorityQueue<T>::removeMin() {
 		}
 		else break;
 	}
-}
+   }
 }
 
 #endif
