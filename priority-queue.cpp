@@ -31,7 +31,7 @@ void PriorityQueue<T>::removeMin() {
     //TODO: mark
     //remove root
     
-    //(return *LinkedBinaryTree<T>::min();)
+    //return *LinkedBinaryTree<T>::min();
    
     /*if (size() == 1)
 	T.removeLast();
