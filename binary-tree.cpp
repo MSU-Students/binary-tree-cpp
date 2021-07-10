@@ -12,7 +12,7 @@ int LinkedBinaryTree<T>::size() const {
 template <class T>
 bool LinkedBinaryTree<T>::empty() const {
     //TODO:for Naim
-    return false;
+    return size() == 0;
 }
 template <class T> 
 Position<T> LinkedBinaryTree<T>::root() const {
