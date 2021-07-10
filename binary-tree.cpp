@@ -7,8 +7,7 @@ LinkedBinaryTree<T>::LinkedBinaryTree() {
 }
 template <class T>
 int LinkedBinaryTree<T>::size() const {
-    //TODO:for chris
-    return 0;
+     return size(root->right) + size(root->left) + 1; //TODO:For Chris
 }
 template <class T>
 bool LinkedBinaryTree<T>::empty() const {
